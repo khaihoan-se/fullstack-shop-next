@@ -1,28 +1,60 @@
-import React from 'react'
-import { HeaderRight, HeaderStyle, LogoStyle } from '@/styles/HeaderStyles'
-import { Container } from '@/styles/Containers'
-import Logo from '@/components/shared/Logo'
-import Link from 'next/link'
-import Search from '@/components/shared/Search'
+import React, { useState } from "react";
+import styles from '@/styles/Header.module.scss';
+import Logo from "@/components/shared/Logo";
+import Search from "@/components/shared/Search";
+import Link from "next/link";
+import { useRouter } from 'next/router'
+import Login from "@/components/shared/Login";
 
-interface HeaderProps {}
+const menuList = [
+   {
+      title: 'Home',
+      href: '/'
+   },
+   {
+      title: 'Products',
+      href: '/products'
+   }
+]
 
-const Header: React.FC<HeaderProps> = () => {
+interface routerType {}
+
+const Header = () => {
+   const [ OpenLogin, setOpenLogin ] = useState(false)
+   const router = useRouter()
+   const isActive = (r:routerType) => {
+      if( r === router.pathname ) {
+         return `${styles.header__right__active}`
+      } else {
+         return ''
+      }
+   }
+
    return (
-      <HeaderStyle>
-         <Container>
-            <LogoStyle>
-               <Link href="/">
-                  <a><Logo /></a>
-               </Link>
-            </LogoStyle>
-
-            <HeaderRight>
+      <header className={styles.header}>
+         <div className={`${styles.container} container`}>
+            <div className={styles.header__logo}>
+               <Link href={'/'}><a><Logo /></a></Link>
+            </div>
+            <div className={styles.header__right}>
                <Search />
-            </HeaderRight>
-            
-         </Container>   
-      </HeaderStyle>
+               {
+                  menuList.map((menu, index) => 
+                     <div className={`${styles.header__right__cell} ${isActive(`${menu.href}`)}`} key={index}>
+                        <Link href={`${menu.href}`}><a>{menu.title}</a></Link>
+                     </div>
+                  )
+               }
+               <div className={`${styles.header__right__cell} ${isActive('/shops')}`}>
+                  <Link href={'/shops'}><a>Shops</a></Link>
+               </div>
+               <div className={styles.header__right__cell} onClick={() => setOpenLogin(!OpenLogin)}>
+                  Login
+               </div>
+               {OpenLogin && <Login OpenLogin={OpenLogin} setOpenLogin={setOpenLogin} />}
+            </div>
+         </div>
+      </header>
    )
 }
 

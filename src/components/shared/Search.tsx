@@ -1,15 +1,18 @@
-import React from "react";
-import { SearchMain, SearchStyle } from "@/styles/SearchStyles";
+import React from 'react';
+import styles from '@/styles/Search.module.scss'
+import SearchIcon from '@/components/icons/SearchIcon';
 
-interface SearchProps {}
-const Search: React.FC<SearchProps> = () => {
-    return (
-        <SearchStyle>
-            <SearchMain>
-                <input type="text" />
-            </SearchMain>
-        </SearchStyle>
-    )
+const Search = () => {
+   return (
+      <div className={styles.search}>
+         <div className={styles.search__main}>
+            <input type="text" />
+            <div className={styles.search__main__searchicon}>
+               <SearchIcon />
+            </div>
+         </div>
+      </div>
+   );
 }
 
-export default Search
+export default Search;

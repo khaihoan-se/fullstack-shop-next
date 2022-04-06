@@ -1,0 +1,48 @@
+@import './variables';
+@import './mixins';
+
+
+.login {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    margin: 0;
+    z-index: 2003;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 20%);
+    &__main {
+        width: 500px;
+        height: 600px;
+        border-radius: 15px;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+        background-color: #fff;
+        position: relative;
+    }
+    &__header {
+        width: 28px;
+        height: 28px;
+        padding: 5px;
+        background-color: #fff;
+        @include mid(true);
+        border-radius: 50%;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+        cursor: pointer;
+        transition: all $t;
+        &:hover {
+            transform: rotate(180deg);
+            transition: all $t;        
+        }
+        &__close {
+            width: 100%;
+        }
+    }
+}
