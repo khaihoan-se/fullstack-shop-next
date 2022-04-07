@@ -1,18 +1,17 @@
-import React from 'react';
-import styles from '@/styles/Search.module.scss'
-import SearchIcon from '@/components/icons/SearchIcon';
+import React from "react";
+import styles from '@/styles/Header.module.scss'
+import SearchIcon from "../icons/SearchIcon";
 
 const Search = () => {
    return (
-      <div className={styles.search}>
-         <div className={styles.search__main}>
-            <input type="text" />
-            <div className={styles.search__main__searchicon}>
-               <SearchIcon />
-            </div>
+      <div className={styles.headweb__search}>
+         <input type="text" />
+
+         <div className={styles.headweb__search__icon}>
+            <SearchIcon />
          </div>
       </div>
-   );
+   )
 }
 
-export default Search;
+export default Search

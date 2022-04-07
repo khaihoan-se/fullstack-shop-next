@@ -1,6 +1,8 @@
 @import './variables';
 @import './mixins';
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Rubik+Puddles&display=swap');
+
 @-ms-viewport {
     width: device-width;
 }
@@ -19,7 +21,7 @@ body {
     max-width: $container-max-width;
     margin: auto;
     @include text($fz-text, $font-main, $lh-text, $text-cl, none);
-    background: $white-cl;
+    background: $main-bg-cl;
     behavior: smooth;
     position: relative;
     @include customscroll();
@@ -99,5 +101,5 @@ body {
 }
 
 .app {
-    margin: 70px auto 0;
+    margin: 80px auto 0;
 }
