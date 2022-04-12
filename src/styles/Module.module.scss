@@ -1,3 +1,54 @@
 @import './mixins';
 @import './variables';
 
+.module {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    z-index: 1000;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    &__main {
+        min-width: 350px;
+        position: relative;
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: .5rem;
+    }
+    &__header {
+        display: flex;
+        align-items: center;
+        &__title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #252329;
+        }
+        &__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #000;
+            cursor: pointer;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            width: 20px;
+            height: 20px;
+            &:hover {
+                -webkit-transform: rotate(
+                90deg);
+                    transform: rotate(
+                90deg);
+                    -webkit-transition: all .4s ease;
+                    transition: all .4s ease;
+            }
+        }
+    }
+}
