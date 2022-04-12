@@ -1,46 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/router'
-import styles from '@/styles/Header.module.scss';
-import Logo from "@/components/shared/Logo";
-import Search from "@/components/shared/Search";
-import { MENU_LIST_HEADER } from '@/constants';
-import Avatar from "../shared/Avatar";
+import styles from '@/styles/Header.module.scss'
 import Link from "next/link";
+import { MENU_LIST_HEADER } from '@/constants'
+import Login from "../shared/Login";
 
-interface HeaderTypes {}
 
+const Header = () => {
+   const router = useRouter()
+   const [ openLogin, setOpenLogin ] = useState(false)
 
-const Header: React.FC<HeaderTypes> = () => {
-   const router = useRouter();
-   const isActive = (e:string) => {
+   const isActive = (e:any) => {
       if(e === router.pathname) {
-         return `${styles.active}`
+         return `${styles.header__menu__item__active}`
       } else {
          return ''
       }
    }
+
    return (
-      <header className={styles.headweb}>
-         <div className={`${styles.headweb__container} container`}>
-            {/* Logo */}
-            <div className={styles.headweb__logo}>
-               <Link href={'/'}><a><Logo /></a></Link>
-            </div>
-            {/* Search */}
-            <Search />
-            {/* Tools */}
-            <div className={styles.headweb__tools}>
-               {
-                  MENU_LIST_HEADER.map((menu, index) => 
-                     <div key={index} className={`${styles.headweb__tools__cell} ${isActive(`${menu.herf}`)}`}>
-                        <Link href={`${menu.herf}`}><a>{menu.title}</a></Link>
-                     </div>
-                  )
-               }
-               <div className={`${styles.headweb__tools__cell} ${isActive('/shops')}`}>
-                  <Link href={'/shops'}><a>Shops</a></Link>
+      <header className={styles.header}>
+         <div className={`${styles.header__nav} container`}>
+            <Link href="/">
+               <a className={styles.header__nav__logo}>KhaiHoan</a>
+            </Link>
+            
+            <div className={styles.header__nav__menu}>
+               <div className={`${styles.header__nav__list} grid`}>
+                  {
+                     MENU_LIST_HEADER.map((item, index) =>
+                        <div className={styles.header__nav__item} key={index}>
+                           <Link href={`${item.herf}`}>
+                              <a className={`${styles.header__nav__link} ${isActive(`${item.herf}`)}`}>{item.title}</a>
+                           </Link>
+                        </div>
+                     )
+                  }
+                  <div className={styles.header__nav__item}>
+                     <Link href={'/shops'}>
+                        <a className={`${styles.header__nav__link} ${isActive('/shops')}`}>Shops</a>
+                     </Link>
+                  </div>
+                  <div className={styles.header__nav__item} onClick={() => setOpenLogin(!openLogin)}>
+                     <div className={styles.header__nav__link}>Login</div>
+                  </div>
+                  {openLogin && <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />}
                </div>
-               <div className={styles.headweb__tools__cell}>Login</div>
             </div>
          </div>
       </header>

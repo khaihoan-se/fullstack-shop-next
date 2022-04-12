@@ -1,7 +1,17 @@
+/* Font */
 @import './variables';
 @import './mixins';
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Rubik+Puddles&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,600&display=swap");
+
+@font-face {
+    font-family: "The Scientist";
+    src: url("../fonts/TheScientistRegular.woff2") format("woff2"),
+        url("../fonts/TheScientistRegular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
 
 @-ms-viewport {
     width: device-width;
@@ -9,6 +19,7 @@
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    // font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
     appearance: none;
@@ -18,19 +29,214 @@
 html,
 body {
     width: 100%;
-    max-width: $container-max-width;
-    margin: auto;
-    @include text($fz-text, $font-main, $lh-text, $text-cl, none);
-    background: $main-bg-cl;
-    behavior: smooth;
+    // max-width: $container-max-width;
+    // margin: auto;
+    // @include text($fz-text, $font-main, $lh-text, $text-cl, none);
+    // background: $white-cl;
+    // behavior: smooth;
     position: relative;
+    /*=============================*/
+    margin: 0 0 0 0;
+    font-family: $body-font;
+    font-size: $normal-font-size;
+    background-color: $body-color;
+    color: $text-color;
     @include customscroll();
+    @include minW($medium) {
+        margin: 0;
+    }
+    // &.dark-theme {
+    //     background-color: $body-color-dark;
+    //     color: $text-color-dark;
+    //     .section__title {
+    //         color: $title-color-dark;
+    //     }
+    //     .section__subtitle {
+    //         color: $text-color-dark;
+    //     }
+    //     a {
+    //         color: $text-color-dark;
+    //     }
+    //     /* Header */
+    //     .header {
+    //         background-color: $body-color-dark;
+    //        .nav {
+    //             &__logo,
+    //             &__toggle {
+    //                 color: $title-color-dark;
+    //             }
+    //             &__toggle {
+    //                 &:hover {
+    //                     color: $first-color;
+    //                 }
+    //             }
+    //             .change-theme {
+    //                 font-size: 1.25rem;
+    //                 margin-right: $mb-1;
+    //                 cursor: pointer;
+    //                 color: $title-color-dark;
+    //                 &:hover {
+    //                     color: $first-color;
+    //                 }
+    //             }
+    //             &__menu {
+    //                 background-color: $body-color-dark;
+    //             }
+    //             &__link {
+    //                 color: $title-color-dark;
+    //                 &:hover {
+    //                     color: $first-color;
+    //                 }
+    //             }
+    //             &__close {
+    //                 color: $title-color-dark;
+    //                 &:hover {
+    //                     color: $first-color;
+    //                 }
+    //             }
+    //        }
+    //     }
+    //     /* Home */
+    //     .home {
+    //         &__img {
+    //             h2 {
+    //                 color: $text-color;
+    //             }
+    //             p {
+    //                 color: $title-color-dark;
+    //             }
+    //         }
+    //         &__subtitle {
+    //             color: $text-color-dark;
+    //         }
+    //     }
+    //     /* About */
+    //     .about {
+    //         &__info {
+    //             &-title {
+    //                 color: $title-color-dark;
+    //             }
+    //         }
+    //     }
+    //     /* Skills */
+    //     .skills {
+    //         &__title {
+    //             color: $title-color-dark;
+    //         }
+    //         .skills__name {
+    //             color: $text-color-dark;
+    //         }
+    //     }
+    //     /* Qualification */
+    //     .qualification {
+    //         &__title {
+    //             color: $title-color-dark;
+    //         }
+    //     }
+    //     /*====== Services ======*/
+    //     .services {
+    //         &__content {
+    //             background-color: $container-color-dark;
+    //         }
+    //         &__title {
+    //             color: $title-color-dark;
+    //         }
+    //         &__modal {
+    //             &-content {
+    //                 background-color: $container-color-dark;
+    //             }
+    //             &-title {
+    //                 color: $title-color-dark;
+    //             }
+    //             &-close {
+    //                 color: $title-color-dark;
+    //             }
+    //         }
+    //     }
+    //     /*====== Portfolio ======*/
+    //     .portfolio {
+    //         .portfolio__title {
+    //             color: $title-color-dark;
+    //         }
+    //         .swiper-pagination-bullet {
+    //             background-color: $title-color-dark;
+    //         }
+    //     }
+    //     /*====== Project ======*/
+    //     .project {
+    //         &__title {
+    //             color: $title-color-dark;
+    //         }
+    //     }
+    //     /*====== Contact ======*/
+    //     .contact {
+    //         &__title {
+    //             color: $title-color-dark;
+    //         }
+    //         &__content {
+    //             background-color: $input-color-dark;
+    //         }
+    //         &__label {
+    //             color: $text-color-dark;
+    //         }
+    //         &__input {
+    //             background-color: $input-color-dark;
+    //         }
+    //     }
+    //     /*====== Footer ======*/
+    //     .footer {
+    //         &__bg {
+    //             background-color: $first-color-second-dark;
+    //         }
+    //         &__link:hover {
+    //             color: $first-color;
+    //         }
+    //         &__social {
+    //             &:hover {
+    //                 color: $first-color;
+    //             }
+    //         }
+    //     }
+    // }
+
+    //*=================== Media ====================*//
+    /* For small devices */
+    // @media screen and (max-width: 350px) {
+    //     .container {
+    //         margin-right: $mb-1;
+    //         margin-left: $mb-1;
+    //     }
+    //     .nav__menu {
+    //         padding: 2rem .25rem 4rem;
+    //     }
+    //     .nav__list {
+    //         column-gap: 0;
+    //     }
+    // }
+
+
+
     .container {
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
+        // width: 100%;
+        // padding-right: 15px;
+        // padding-left: 15px;
+        // margin-right: auto;
+        // margin-left: auto;
+        max-width: 768px;
+        margin-left: $mb-1-5;
+        margin-right: $mb-1-5;
+        @include maxW($args) {
+            margin-left: $mb-1;
+            margin-right: $mb-1;
+        }
+        @include minW($medium) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .grid {
+        display: grid;
+        gap: 1.5rem;
     }
     .container-fluid {
         width: 100%;
@@ -58,31 +264,27 @@ body {
         padding-left: 0;
     }
 
-    @media (min-width: $xxs-min) {
-        .container {
-            max-width: 540px;
-        }
-    }
-    @media (min-width: $xs-min) {
-        .container {
-            max-width: 720px;
-        }
-    }
-    @media (min-width: $sm-min) {
-        .container {
-            max-width: 960px;
-        }
-    }
-    @media (min-width: $md-min) {
-        .container {
-            max-width: $container-width;
-        }
-    }
+    // @media (min-width: $xxs-min) {
+    //     .container {
+    //         max-width: 540px;
+    //     }
+    // }
+    // @media (min-width: $xs-min) {
+    //     .container {
+    //         max-width: 720px;
+    //     }
+    // }
+    // @media (min-width: $sm-min) {
+    //     .container {
+    //         max-width: 960px;
+    //     }
+    // }
+    // @media (min-width: $md-min) {
+    //     .container {
+    //         max-width: $container-width;
+    //     }
+    // }
 
-    .mainwrapper {
-        width: 100%;
-        margin: auto;
-    }
     @include lg {
         // CSS responsive large desktop
     }
@@ -99,7 +301,6 @@ body {
         // CSS responsive small mobile
     }
 }
-
 .app {
     margin: 80px auto 0;
 }
