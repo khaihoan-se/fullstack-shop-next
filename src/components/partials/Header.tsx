@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from 'next/router'
 import styles from '@/styles/Header.module.scss'
 import Link from "next/link";
 import { MENU_LIST_HEADER } from '@/constants'
-import Login from "../shared/Login";
+import Login from '@/components/shared/Login'
+import useToggle from "@/components/hooks/useToggle";
 
 
 const Header = () => {
    const router = useRouter()
-   const [ openLogin, setOpenLogin ] = useState(false)
+   const [ openLogin, setOpenLogin ] = useToggle()
 
    const isActive = (e:any) => {
       if(e === router.pathname) {
@@ -24,7 +25,7 @@ const Header = () => {
             <Link href="/">
                <a className={styles.header__nav__logo}>KhaiHoan</a>
             </Link>
-            
+
             <div className={styles.header__nav__menu}>
                <div className={`${styles.header__nav__list} grid`}>
                   {
