@@ -2,12 +2,12 @@ import React from "react";
 import styles from '@/styles/Module.module.scss'
 import CloseIcon from '@/components/icons/CloseIcon'
 
-interface Props {
+interface ModuleProps {
     openLogin: boolean,
-    setOpenLogin: (open: boolean) => void;
+    setOpenLogin: (openLogin: boolean) => void;
     title: string
 }
-const Module: React.FC<Props> = ({ openLogin, setOpenLogin, title, children}) => {
+const Module: React.FC<ModuleProps> = ({ openLogin, setOpenLogin, title, children}) => {
     return (
         <div className={styles.module}>
             <div className={styles.module__main}>

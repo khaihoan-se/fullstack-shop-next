@@ -17,6 +17,7 @@
         padding: 0;
     }
     &__nav {
+        max-width: 968px !important;
         height: $header-height;
         display: flex;
         align-items: center;
@@ -71,14 +72,15 @@
             font-size: $small-font-size;
             color: $title-color;
             font-weight: $font-medium;
+            cursor: pointer;
             &:hover {
                 color: $first-color;
                 // -webkit-animation: jello-horizontal 0.9s both;
                 //     animation: jello-horizontal 0.9s both;
             }
-            &.active-link {
-                color: $first-color;
-            }
+        }
+        &__active {
+            color: $first-color;
         }
         &__icon {
             font-size: 1.2rem;

@@ -1,8 +1,15 @@
 import React from "react";
 
-const Button: React.FC = () => {
+interface RegisterProps {
+    type?: string,
+    onClick?: (e: any) => void,
+}
+
+const Button = (props: RegisterProps) => {
     return (
-        <button>Button</button>
+        <button
+            onClick={props.onClick}
+        >{props.type}</button>
     )
 }
 

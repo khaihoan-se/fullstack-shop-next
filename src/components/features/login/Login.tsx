@@ -1,15 +1,19 @@
 import React from "react";
 import styles from '@/styles/Login.module.scss'
 import Module from "@/components/shared/Module";
+import Button from "@/components/shared/Button";
 
-interface Props {
+interface LoginProps {
     openLogin: boolean,
     setOpenLogin: (open: boolean) => void,
-    titleLogin: string
+    handleClick: () => void,
+    titleLogin?: string,
 }
 const titleLogin = 'Log in to Akame'
 
-const Login: React.FC<Props> = ({ openLogin, setOpenLogin }) => {
+const Login = (props: LoginProps) => {
+    const { openLogin, setOpenLogin, handleClick } = props
+   
     return (
         <>
             <Module openLogin={openLogin} setOpenLogin={setOpenLogin} title={titleLogin}>
@@ -27,7 +31,8 @@ const Login: React.FC<Props> = ({ openLogin, setOpenLogin }) => {
                         </div>
                     </div>
                     <div className={styles.login__item}>
-                        Submit
+                        <Button type='Login' />
+                        <Button type='Register' onClick={handleClick} />
                     </div>
                 </div>
             </Module>
